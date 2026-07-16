@@ -4,9 +4,12 @@ import UserProfile from "@/components/user-profile";
 import clsx from "clsx";
 import {
   Banknote,
+  FileText,
+  History,
   HomeIcon,
   LucideIcon,
   MessageCircleIcon,
+  PenLine,
   Settings,
   Upload,
 } from "lucide-react";
@@ -24,6 +27,16 @@ const navItems: NavItem[] = [
     label: "Overview",
     href: "/dashboard",
     icon: HomeIcon,
+  },
+  {
+    label: "写周报",
+    href: "/dashboard/write",
+    icon: PenLine,
+  },
+  {
+    label: "历史记录",
+    href: "/dashboard/history",
+    icon: History,
   },
   {
     label: "Chat",
