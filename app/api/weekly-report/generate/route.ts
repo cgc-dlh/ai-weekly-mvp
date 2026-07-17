@@ -4,8 +4,8 @@ import { weeklyReport, userStyleProfile } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import { openai } from "@ai-sdk/openai";
 import { generateText } from "ai";
+import { openai, defaultModel } from "@/lib/ai-client";
 import { canGenerate, recordUsage } from "@/lib/usage";
 import { getTemplate, TemplateId } from "@/lib/templates";
 import { buildSystemPrompt, buildUserPrompt, buildQualityCheckPrompt } from "@/lib/prompts";
@@ -80,7 +80,7 @@ export async function POST(req: Request) {
 
     // 6. AI 生成
     const { text: generatedContent } = await generateText({
-      model: openai("gpt-4o-mini"),
+      model: openai(defaultModel),
       system: systemPrompt,
       prompt: userPrompt,
       temperature: 0.7,
@@ -108,7 +108,7 @@ ${qualityResult.issues.map((i) => `- [${i.severity}] ${i.rule}: ${i.suggestion}`
 请直接输出修正后的完整周报，不要有任何额外说明。`;
 
       const { text: corrected } = await generateText({
-        model: openai("gpt-4o-mini"),
+        model: openai(defaultModel),
         system: systemPrompt,
         prompt: correctionPrompt,
         temperature: 0.5,
