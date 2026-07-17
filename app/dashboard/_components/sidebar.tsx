@@ -4,7 +4,6 @@ import UserProfile from "@/components/user-profile";
 import clsx from "clsx";
 import {
   Banknote,
-  FileText,
   History,
   HomeIcon,
   LucideIcon,

@@ -8,8 +8,8 @@ import { generateText } from "ai";
 import { openai, defaultModel } from "@/lib/ai-client";
 import { canGenerate, recordUsage } from "@/lib/usage";
 import { getTemplate, TemplateId } from "@/lib/templates";
-import { buildSystemPrompt, buildUserPrompt, buildQualityCheckPrompt } from "@/lib/prompts";
-import { fullQualityCheck, quickCheck } from "@/lib/quality-checker";
+import { buildSystemPrompt, buildUserPrompt } from "@/lib/prompts";
+import { fullQualityCheck } from "@/lib/quality-checker";
 
 export async function POST(req: Request) {
   try {
